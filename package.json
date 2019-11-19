@@ -1,0 +1,71 @@
+{
+    "name": "react-web-win",
+    "version": "1.0.0",
+    "description": "",
+    "homepage": ".",
+    "main": "public/electron.js",
+    "author": {
+        "name": "Luiz de Queiroz",
+        "email": "oluizdequeiroz@gmail.com",
+        "url": "https://github.com/luizdequeiroz"
+    },
+    "build": {
+        "appId": "luizdequeiroz/com.github//:https",
+        "productName": "WithElectron",
+        "copyright": "Copyright © 2019 ${author}",
+        "mac": {
+            "category": "public.app-category.utilities"
+        },
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
+    "scripts": {
+        "start-web": "react-scripts start",
+        "build-web": "react-scripts build",
+        "postinstall": "electron-builder install-app-deps",
+        "preelectron-pack": "npm run build-web",
+        "start-win": "concurrently \"npm run start-web\" \"wait-on http://localhost:3000 && electron .\"",
+        "build-win": "build --win"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/luizdequeiroz/react-web-win.git"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/luizdequeiroz/react-web-win/issues"
+    },
+    "devDependencies": {
+        "concurrently": "^5.0.0",
+        "electron": "^7.1.1",
+        "electron-builder": "^21.2.0",
+        "react-scripts": "^3.2.0",
+        "typescript": "^3.7.2",
+        "wait-on": "^3.3.0"
+    },
+    "dependencies": {
+        "electron-is-dev": "^1.1.0",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
