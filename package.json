@@ -27,10 +27,10 @@
     "scripts": {
         "start-web": "react-scripts start",
         "build-web": "react-scripts build",
-        "postinstall": "electron-builder install-app-deps",
-        "preelectron-pack": "npm run build-web",
         "start-win": "concurrently \"npm run start-web\" \"wait-on http://localhost:3000 && electron .\"",
-        "build-win": "build --win"
+        "postinstall": "electron-builder install-app-deps",
+        "prebuild-win": "npm run build-web",
+        "build-win": "electron-builder --win"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -52,8 +52,10 @@
         "wait-on": "^3.3.0"
     },
     "dependencies": {
+        "bootstrap": "^4.3.1",
         "electron-is-dev": "^1.1.0",
         "react": "^16.12.0",
+        "react-bootstrap": "^1.0.0-beta.16",
         "react-dom": "^16.12.0"
     },
     "browserslist": {
