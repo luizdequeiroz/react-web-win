@@ -3,9 +3,8 @@ import ModalTeste from './modal';
 
 function App() {
     const [json, setJson] = useState(undefined);
-
     function handleRequest() {
-
+        
         fetch('http://cosmosnethomo.pmenos.com.br/apifarmaciapopularally/api/Solicitacao')
             .then(http => {
                 if(http.ok && http.status === 200) {
