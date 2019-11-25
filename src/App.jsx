@@ -3,6 +3,7 @@ import ModalTeste from './modal';
 
 function App() {
     const [json, setJson] = useState(undefined);
+
     function handleRequest() {
         
         fetch('http://cosmosnethomo.pmenos.com.br/apifarmaciapopularally/api/Solicitacao')
@@ -23,7 +24,7 @@ function App() {
 
     return <>
         <ModalTeste />
-        <button onClick={handleRequest}>Request</button>
+        <button id="btn01">Request</button>
         {json && (json.result ? 
             <ul>
                 {json.content.map(solicitacao => <li>{solicitacao.usuarioVendedor}</li>)}

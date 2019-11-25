@@ -1,12 +1,12 @@
-const electron = require('electron');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
+const { execFile } = require('child_process');
 
 let mainWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({ width: 900, height: 680, autoHideMenuBar: true });
+    mainWindow = new BrowserWindow({ width: 900, height: 680, autoHideMenuBar: true, webPreferences: { nodeIntegration: true } });
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     if (isDev) {
         // Open the DevTools.
@@ -29,4 +29,9 @@ app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();
     }
+});
+
+ipcMain.on('main-action', (event, arg) => {
+
+    execFile("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
 });
